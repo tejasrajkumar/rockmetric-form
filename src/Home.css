@@ -1,0 +1,36 @@
+
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signedup-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.signup-form {
+    padding: 32px;
+    margin: 32px;
+    border: 1px solid #0d6efd;
+    border-radius: 8px;
+    width: 50%;
+}
+
+.form-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;    
+}
+
+.note {
+  font-size: 14px;
+}
+
+.flex-fields {
+    display: flex;
+}
+

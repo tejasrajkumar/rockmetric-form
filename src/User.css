@@ -1,0 +1,18 @@
+
+.info-container {
+    padding: 24px;
+    margin: 32px;
+    border: 1px solid #FF5733;
+    border-radius: 8px;
+    width: 40%;
+    height: max-content;
+}
+
+.title {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.subtitle {
+  font-weight: 500;
+}
