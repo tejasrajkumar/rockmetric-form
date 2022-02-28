@@ -1,36 +1,17 @@
-
-.signup-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.card {
+    box-shadow: 0 0 10px 0 rgba(100, 100, 100, 0.26);
 }
 
-.signedup-container {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
+#age::-webkit-outer-spin-button,
+#age::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
-.signup-form {
-    padding: 32px;
-    margin: 32px;
-    border: 1px solid #0d6efd;
-    border-radius: 8px;
-    width: 50%;
-}
-
-.form-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;    
+#age[type=number] {
+    -moz-appearance: textfield;
 }
 
 .note {
   font-size: 14px;
 }
-
-.flex-fields {
-    display: flex;
-}
-

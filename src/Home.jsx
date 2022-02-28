@@ -8,7 +8,7 @@ const defaultUser = {
   lastName: "",
   emailId: "",
   gender: "Male",
-  age: "",
+  age: null,
   maritalStatus: "",
   qualification: "",
 };
@@ -27,15 +27,27 @@ const Home = () => {
     return user.firstName && user.lastName && user.age && user.gender;
   };
 
+  const handleResetForm = () => {
+    setSubmitted(false);
+    setUser(defaultUser);
+  };
+
   return (
     <>
-      <div className={submitted ? "signedup-container" : "signup-container"}>
+      <div
+        className={
+          submitted
+            ? "d-flex flex-row justify-content-space-between align-items-start"
+            : "d-flex justify-content-center align-items-center"
+        }
+      >
         <form
           id="userSignUpForm"
-          className="signup-form"
+          className="card border-primary m-4 p-3"
+          style={{ width: "60%" }}
           onSubmit={handleSubmit}
         >
-          <div className="form-header">
+          <div className="d-flex flex-column justify-content-center align-items-center">
             <img
               src={logo}
               className="img-fluid"
@@ -59,6 +71,7 @@ const Home = () => {
                 aria-label="First Name"
                 aria-describedby="basic-addon1"
                 required
+                disabled={submitted}
                 onChange={(e) =>
                   setUser({ ...user, firstName: e.target.value })
                 }
@@ -75,6 +88,7 @@ const Home = () => {
                 aria-label="Last Name"
                 aria-describedby="basic-addon1"
                 required
+                disabled={submitted}
                 onChange={(e) => setUser({ ...user, lastName: e.target.value })}
               />
             </div>
@@ -89,6 +103,7 @@ const Home = () => {
                 className="form-control"
                 aria-label="Email Id"
                 placeholder="Enter your Email Id"
+                disabled={submitted}
                 onChange={(e) => setUser({ ...user, emailId: e.target.value })}
               />
             </div>
@@ -103,6 +118,7 @@ const Home = () => {
                 aria-label="Gender"
                 placeholder="Select your gender"
                 required
+                disabled={submitted}
                 onChange={(e) => setUser({ ...user, gender: e.target.value })}
               >
                 <option value="Male">Male</option>
@@ -117,10 +133,12 @@ const Home = () => {
               <input
                 type="number"
                 className="form-control"
+                id="age"
                 placeholder="Enter your age"
                 aria-label="Age"
                 aria-describedby="basic-addon1"
                 required
+                disabled={submitted}
                 onChange={(e) =>
                   setUser({ ...user, age: Number(e.target.value) })
                 }
@@ -130,7 +148,7 @@ const Home = () => {
           <label htmlFor="maritalStatus" className="form-label">
             Marital Status
           </label>
-          <div className="flex-fields">
+          <div className="d-flex">
             <div className="form-check mb-3">
               <input
                 className="form-check-input"
@@ -138,6 +156,7 @@ const Home = () => {
                 name="maritalStatus"
                 id="singleMaritalStatus"
                 value="Single"
+                disabled={submitted}
                 onChange={(e) =>
                   setUser({ ...user, maritalStatus: e.target.value })
                 }
@@ -153,6 +172,7 @@ const Home = () => {
                 name="maritalStatus"
                 id="marriedMaritalStatus"
                 value="Married"
+                disabled={submitted}
                 onChange={(e) =>
                   setUser({ ...user, maritalStatus: e.target.value })
                 }
@@ -168,13 +188,14 @@ const Home = () => {
           <label htmlFor="qualification" className="form-label">
             Qualification
           </label>
-          <div className="flex-fields">
+          <div className="d-flex">
             <div className="form-check mb-3">
               <input
                 className="form-check-input"
                 type="checkbox"
                 value="10th"
                 id="tenthQualification"
+                disabled={submitted}
                 onChange={(e) =>
                   setUser({ ...user, qualification: e.target.value })
                 }
@@ -189,6 +210,7 @@ const Home = () => {
                 type="checkbox"
                 value="12th"
                 id="twelvthQualification"
+                disabled={submitted}
                 onChange={(e) =>
                   setUser({ ...user, qualification: e.target.value })
                 }
@@ -203,6 +225,7 @@ const Home = () => {
                 type="checkbox"
                 value="B.Tech"
                 id="btechQualification"
+                disabled={submitted}
                 onChange={(e) =>
                   setUser({ ...user, qualification: e.target.value })
                 }
@@ -212,11 +235,17 @@ const Home = () => {
               </label>
             </div>
           </div>
-          <button type="submit" className="btn btn-primary mt-3">
+          <button
+            type="submit"
+            className="btn btn-primary mt-3 btn-md"
+            disabled={submitted}
+          >
             Submit
           </button>
         </form>
-        {submitted && isMandatoryValuesAvailable() && <User user={user} />}
+        {submitted && isMandatoryValuesAvailable() ? (
+          <User user={user} onReset={handleResetForm} />
+        ) : null}
       </div>
     </>
   );

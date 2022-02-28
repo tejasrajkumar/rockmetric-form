@@ -1,11 +1,14 @@
 import React from "react";
 import "./User.css";
 
-const User = ({ user }) => {
+const User = ({ user, onReset }) => {
   return (
-    <div className="info-container">
-      <div className="d-flex justify-content-center mb-4">
-        <p className="title">Your Personal Details</p>
+    <div
+      className="card border-warning m-4 p-4"
+      style={{ width: "40%", height: "max-content" }}
+    >
+      <div class="card-header bg-transparent border-warning d-flex justify-content-center mb-4">
+        <b>Your Personal Details</b>
       </div>
       <div className="d-flex justify-content-between">
         <div>
@@ -52,6 +55,15 @@ const User = ({ user }) => {
         <div>
           <p>{user.qualification}</p>
         </div>
+      </div>
+      <div className="d-flex justify-content-center">
+        <button
+          type="button"
+          className="btn btn-outline-dark mt-3 btn-md"
+          onClick={onReset}
+        >
+          Reset Details
+        </button>
       </div>
     </div>
   );
